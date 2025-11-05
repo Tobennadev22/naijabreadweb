@@ -55,20 +55,15 @@ export function Footer() {
           >
             {/* Left Side - Brand */}
             <VStack align={{ base: "center", md: "start" }} spacing={3}>
-              <Text
-                fontSize="3xl"
-                fontWeight="bold"
-                color="orange.300"
-                textShadow="0 2px 10px rgba(249, 115, 22, 0.3)"
-              >
-                Fresh Bakery
+              <Text fontSize="3xl" fontWeight="bold" color="brand.200">
+                Naijabreads
               </Text>
               <Text
                 color="whiteAlpha.600"
                 textAlign={{ base: "center", md: "left" }}
                 maxW="300px"
               >
-                Artisan breads and pastries crafted with passion and tradition
+                Delicious breads and cakes crafted with passion and tradition
               </Text>
             </VStack>
 
@@ -135,7 +130,7 @@ export function Footer() {
                     transition: "all 0.3s ease",
                   }}
                 />
-                <IconButton
+                {/* <IconButton
                   aria-label="Email"
                   icon={<FaEnvelope />}
                   size="lg"
@@ -153,7 +148,7 @@ export function Footer() {
                     },
                     transition: "all 0.3s ease",
                   }}
-                />
+                /> */}
               </HStack>
             </VStack>
           </Flex>
@@ -260,7 +255,7 @@ export function Footer() {
           {/* Bottom Section */}
           <VStack spacing={4} width="full">
             {/* Quick Links */}
-            <HStack spacing={6} flexWrap="wrap" justify="center">
+            {/* <HStack spacing={6} flexWrap="wrap" justify="center">
               <Link
                 href="/about"
                 color="whiteAlpha.700"
@@ -300,8 +295,8 @@ export function Footer() {
                 transition="color 0.3s ease"
               >
                 Terms of Service
-              </Link>
-            </HStack>
+              </Link> */}
+            {/* </HStack> */}
 
             {/* Copyright */}
             <Text color="whiteAlpha.500" fontSize="sm" textAlign="center">

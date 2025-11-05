@@ -1,68 +1,3 @@
-// "use client";
-
-// import {
-//   Drawer,
-//   DrawerBody,
-//   DrawerHeader,
-//   DrawerOverlay,
-//   DrawerContent,
-//   DrawerCloseButton,
-//   VStack,
-//   Box,
-//   Flex,
-//   Text,
-//   Button,
-// } from "@chakra-ui/react";
-// import { CartItem } from "./cartitem";
-// import { useCart } from "../../app/lib/cart-context";
-
-// export function CartDrawer({ isOpen, onClose }) {
-//   const { cart, getTotalPrice, clearCart } = useCart();
-
-//   return (
-//     <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="md">
-//       <DrawerOverlay />
-//       <DrawerContent>
-//         <DrawerCloseButton />
-//         <DrawerHeader borderBottomWidth="1px">Your Shopping Cart</DrawerHeader>
-
-//         <DrawerBody>
-//           {cart.length === 0 ? (
-//             <Text textAlign="center" mt={8} color="gray.500">
-//               Your cart is empty
-//             </Text>
-//           ) : (
-//             <VStack spacing={4} align="stretch" mt={4}>
-//               {cart.map((item) => (
-//                 <CartItem key={item.id} item={item} />
-//               ))}
-
-//               <Box pt={4} borderTopWidth="1px">
-//                 <Flex justify="space-between" align="center" mb={4}>
-//                   <Text fontSize="xl" fontWeight="bold">
-//                     Total: ${getTotalPrice()}
-//                   </Text>
-//                 </Flex>
-
-//                 <Flex gap={2}>
-//                   <Button flex={1} variant="outline" onClick={clearCart}>
-//                     Clear Cart
-//                   </Button>
-//                   <Button colorScheme="orange" flex={2} size="lg">
-//                     Checkout
-//                   </Button>
-//                 </Flex>
-//               </Box>
-//             </VStack>
-//           )}
-//         </DrawerBody>
-//       </DrawerContent>
-//     </Drawer>
-//   );
-// }
-
-// export default CartDrawer;
-
 "use client";
 
 import { useState } from "react";
@@ -81,21 +16,35 @@ import {
 } from "@chakra-ui/react";
 import { CartItem } from "./cartitem";
 import { CustomerForm } from "./customerform";
+import { PaymentModal } from "../payment/paymentmodal";
 import { useCart } from "../../app/lib/cart-context";
 
 export function CartDrawer({ isOpen, onClose }) {
   const { cart, getTotalPrice, clearCart } = useCart();
   const [isCustomerFormOpen, setIsCustomerFormOpen] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
 
   const handleSendOrderClick = () => {
     if (cart.length === 0) {
       return;
     }
+    // Show payment modal first
+    setIsPaymentModalOpen(true);
+  };
+
+  const handlePaymentSuccess = () => {
+    // After payment is confirmed, show customer form
     setIsCustomerFormOpen(true);
   };
 
   const handleCustomerFormClose = () => {
     setIsCustomerFormOpen(false);
+    // Close the cart drawer when form is closed
+    onClose();
+  };
+
+  const handlePaymentModalClose = () => {
+    setIsPaymentModalOpen(false);
   };
 
   return (
@@ -161,6 +110,26 @@ export function CartDrawer({ isOpen, onClose }) {
                     </Text>
                   </Flex>
 
+                  {/* Payment Method Notice */}
+                  <Box
+                    mb={4}
+                    p={3}
+                    borderRadius="lg"
+                    sx={{
+                      background: "rgba(249, 115, 22, 0.1)",
+                      border: "1px solid rgba(249, 115, 22, 0.2)",
+                    }}
+                  >
+                    <Text
+                      color="orange.300"
+                      fontSize="sm"
+                      fontWeight="medium"
+                      textAlign="center"
+                    >
+                      💳 Pay with PayID (Australia)
+                    </Text>
+                  </Box>
+
                   <Flex gap={3}>
                     <Button
                       flex={1}
@@ -185,19 +154,19 @@ export function CartDrawer({ isOpen, onClose }) {
                       size="lg"
                       onClick={handleSendOrderClick}
                       sx={{
-                        background: "rgba(249, 115, 22, 0.8)",
+                        background: "rgba(76, 34, 4, 0.8)",
                         backdropFilter: "blur(10px)",
                         border: "1px solid rgba(255, 255, 255, 0.2)",
                         color: "white",
                         fontWeight: "bold",
                         _hover: {
-                          background: "rgba(249, 115, 22, 0.9)",
+                          background: "rgba(91, 41, 6, 0.9)",
                           transform: "translateY(-2px)",
-                          shadow: "0 8px 25px rgba(249, 115, 22, 0.3)",
+                          boxShadow: "0 8px 25px rgba(32, 14, 2, 0.3)",
                         },
                       }}
                     >
-                      Send Order
+                      Proceed to Pay
                     </Button>
                   </Flex>
                 </Box>
@@ -207,6 +176,14 @@ export function CartDrawer({ isOpen, onClose }) {
         </DrawerContent>
       </Drawer>
 
+      {/* Payment Modal */}
+      <PaymentModal
+        isOpen={isPaymentModalOpen}
+        onClose={handlePaymentModalClose}
+        onPaymentSuccess={handlePaymentSuccess}
+      />
+
+      {/* Customer Form */}
       <CustomerForm
         isOpen={isCustomerFormOpen}
         onClose={handleCustomerFormClose}

@@ -40,7 +40,7 @@ export function ProductGrid({ products }) {
     <Container maxW="container.xl" py={12}>
       <Box textAlign="center" mb={12}>
         <Heading size="xl" mb={3} color="whiteAlpha.900" fontWeight="bold">
-          Our Fresh Breads
+          Pick your Delight
         </Heading>
         <Box
           width="100px"
