@@ -300,7 +300,7 @@ export function Footer() {
 
             {/* Copyright */}
             <Text color="whiteAlpha.500" fontSize="sm" textAlign="center">
-              © {new Date().getFullYear()} Fresh Bakery. All rights reserved.
+              © {new Date().getFullYear()} Naijabreads. All rights reserved.
             </Text>
           </VStack>
         </VStack>
