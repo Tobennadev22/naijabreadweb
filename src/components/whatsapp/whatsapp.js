@@ -7,8 +7,7 @@ import { useState } from "react";
 export function WhatsAppButton() {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const phoneNumber =
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "2348067049945";
+  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "61493159039";
   const message =
     process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ||
     "Hi! I'd like to see availabe cakes and place an order.";

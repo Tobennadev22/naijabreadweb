@@ -478,15 +478,15 @@ export function PaymentModal({ isOpen, onClose, onPaymentSuccess }) {
         >
           <VStack spacing={6}>
             {/* Payment Instructions */}
-            {/* <Box textAlign="center">
+            <Box textAlign="center">
               <Icon as={FaMobileAlt} boxSize={8} color="green.400" mb={3} />
               <Text fontSize="lg" color="whiteAlpha.800" fontWeight="medium">
-                Quick & Secure Payment
+                Our deliveries are on:
               </Text>
-              <Text color="whiteAlpha.600" fontSize="sm" mt={2}>
-                Use your banking app to pay instantly with PayID
+              <Text color="whiteAlpha.600" fontSize="md" mt={2}>
+                Sundays & Tuesdays
               </Text>
-            </Box> */}
+            </Box>
 
             {/* PayID Details Card */}
             <Box

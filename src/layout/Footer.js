@@ -17,6 +17,7 @@ import {
   FaTwitter,
   FaEnvelope,
 } from "react-icons/fa";
+import NextLink from "next/link";
 
 export function Footer() {
   return (
@@ -73,26 +74,32 @@ export function Footer() {
                 Follow Our Journey
               </Text>
               <HStack spacing={3}>
-                <IconButton
-                  aria-label="Instagram"
-                  icon={<FaInstagram />}
-                  size="lg"
-                  variant="ghost"
-                  sx={{
-                    color: "whiteAlpha.700",
-                    background: "rgba(255, 255, 255, 0.05)",
-                    backdropFilter: "blur(10px)",
-                    border: "1px solid rgba(255, 255, 255, 0.1)",
-                    _hover: {
-                      color: "orange.300",
-                      background: "rgba(255, 255, 255, 0.1)",
-                      transform: "translateY(-2px)",
-                      boxShadow: "0 8px 25px rgba(249, 115, 22, 0.2)",
-                    },
-                    transition: "all 0.3s ease",
-                  }}
-                />
-                <IconButton
+                <Link
+                  as={NextLink}
+                  href="https://www.instagram.com/naijabreads/"
+                >
+                  <IconButton
+                    aria-label="Instagram"
+                    icon={<FaInstagram />}
+                    size="lg"
+                    variant="ghost"
+                    sx={{
+                      color: "whiteAlpha.700",
+                      background: "rgba(255, 255, 255, 0.05)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      _hover: {
+                        color: "orange.300",
+                        background: "rgba(255, 255, 255, 0.1)",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 8px 25px rgba(249, 115, 22, 0.2)",
+                      },
+                      transition: "all 0.3s ease",
+                    }}
+                    isExternal
+                  />
+                </Link>
+                {/* <IconButton
                   aria-label="Facebook"
                   icon={<FaFacebook />}
                   size="lg"
@@ -110,8 +117,9 @@ export function Footer() {
                     },
                     transition: "all 0.3s ease",
                   }}
-                />
-                <IconButton
+                  isExternal
+                /> */}
+                {/* <IconButton
                   aria-label="Twitter"
                   icon={<FaTwitter />}
                   size="lg"
@@ -129,7 +137,7 @@ export function Footer() {
                     },
                     transition: "all 0.3s ease",
                   }}
-                />
+                /> */}
                 {/* <IconButton
                   aria-label="Email"
                   icon={<FaEnvelope />}

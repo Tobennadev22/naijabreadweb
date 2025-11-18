@@ -71,13 +71,13 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: '"Belanosima", serif',
+    heading: '"Belanosima", san-serif',
     body: '"Inter", sans-serif',
   },
   components: {
     Button: {
       defaultProps: {
-        colorScheme: "orange",
+        colorScheme: "#582705ff",
       },
     },
     Container: {
